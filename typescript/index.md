@@ -277,3 +277,8 @@ directions with `wsrpc-aiohttp` and `wsrpc-asgi`. The shared documentation
 checks TypeScript syntax without requiring the unpublished package. See
 [maintaining the documentation](../contributing.md) for its optional runtime
 checks against the locally built npm artifact.
+
+For package boundaries, conditional exports and compatibility gates, see the
+[WSRPC development guide](https://github.com/wsrpc/wsrpc-ts/blob/main/DEVELOPMENT.md).
+These checks run in CI; applications only need the import and installation
+instructions for their runtime.

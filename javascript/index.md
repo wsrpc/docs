@@ -16,6 +16,7 @@ from the same GitHub Release in [wsrpc-ts](https://github.com/wsrpc/wsrpc-ts).
 
 quick-start
 client
+workers
 ../typescript/index
 ```
 

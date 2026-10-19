@@ -8,8 +8,17 @@ Use the existing browser client or the typed Node.js transport from
 
 `@wsrpc/client/node` provides a typed `ws`-based `WSRPCClient`. It connects to the same
 servers and supports callbacks, route classes, events and typed remote proxies.
-Install `@wsrpc/client` (or use the local archives described in the
-[TypeScript guide](../typescript/index.md#install-from-a-checkout)), then run:
+Install the client and its optional Node transport (or use the local archives
+from the [TypeScript guide](../typescript/index.md#install-from-a-checkout)):
+
+```shell
+npm install @wsrpc/client ws
+# For type checking a Node application:
+npm install --save-dev @types/ws @types/node
+```
+
+Browser and Worker consumers install only `@wsrpc/client`; it does not pull in
+`ws` or Node declarations. Then run the Node client:
 
 ```{literalinclude} ../typescript/examples/client.ts
 :language: typescript
@@ -77,3 +86,32 @@ Browser call options use `{ noWait: true }`. Node clients instead accept
 `{ timeout, signal }`; the type declarations keep these transport options distinct.
 Both are checked by the repository's `npm run test:types`, including expected
 compiler errors for incorrect calls.
+
+## Observe browser payloads
+
+Existing application code written for 4.4.1 keeps using `new WSRPC(url)` or
+`new WSRPC(url, reconnectTimeout)`. Only applications which need tracing opt in
+to the third constructor argument:
+
+```javascript
+const rpc = new WSRPC('ws://127.0.0.1:8000/ws/', 1000, {
+  onFrame({ direction, data }) {
+    console.log(direction, data); // "in" or "out", raw application payload
+  },
+});
+rpc.connect();
+```
+
+Incoming payloads arrive before JSON parsing, including malformed JSON.
+Outgoing payloads are reported once after WebSocket.send accepts them, including
+queued calls when flushed, callback responses and `sendRaw` data. Control frames
+are handled by the browser and are not exposed. This is observation only:
+return values are ignored and Promises are never awaited. Metadata is frozen
+and mutable binary payloads are copied. Observer failures, including rejected
+Promises and failures in console.error, do not interrupt RPC. DEBUG and TRACE
+retain their boolean behavior.
+
+A compatibility test runs the same unmodified HTML/JavaScript application with
+the original npm 4.4.1 bundle and the new bundle, comparing results from calls,
+callbacks, events, binary sends, errors and reconnects. Unit tests also compare
+the serialized messages against the original source and UMD release.
