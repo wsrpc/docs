@@ -1,6 +1,8 @@
 # WSRPC documentation
 
-Documentation site for WSRPC, built with Sphinx, MyST and Furo.
+One documentation site for `wsrpc-aiohttp` and `wsrpc-asgi`, built with
+Sphinx, MyST and Furo. Shared protocol/client guides and separate server
+integration guides keep the transport-specific APIs explicit.
 
 ```shell
 uv sync --locked
@@ -16,3 +18,7 @@ The repository was extracted from `wsrpc-aiohttp` with `git filter-repo
 live at the repository root. Library implementation code is not included.
 
 Licensed under Apache-2.0; original attribution is retained.
+
+See [maintaining the site](contributing.md) for API snapshots, optional ASGI
+example checks, source provenance and GitHub Pages setup. Runtime examples
+live under `aiohttp/examples/` and `asgi/examples/`.

@@ -23,7 +23,18 @@ def task_test_docs() -> None:
 
 def task_build() -> None:
     shutil.rmtree(ROOT / "_build/html", ignore_errors=True)
-    run("sphinx", "-E", "-W", "--keep-going", "-b", "html", ".", "_build/html")
+    run(
+        "sphinx",
+        "-E",
+        "-W",
+        "--keep-going",
+        "-b",
+        "html",
+        "-d",
+        "_build/doctrees",
+        ".",
+        "_build/html",
+    )
     (ROOT / "_build/html/.nojekyll").touch()
     subprocess.run(
         [sys.executable, "tools/check_site.py", "_build/html"],

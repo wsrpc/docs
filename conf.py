@@ -6,6 +6,7 @@ copyright = f"{datetime.now().year}, {author}"
 extensions = ["myst_parser", "sphinx_reredirects"]
 source_suffix = {".md": "markdown", ".rst": "restructuredtext"}
 root_doc = "index"
+myst_heading_anchors = 3
 html_theme = "furo"
 html_static_path = ["_static"]
 html_favicon = "_static/Icon.png"

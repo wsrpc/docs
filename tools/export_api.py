@@ -157,8 +157,13 @@ def export(source: Path, section: str):
     for name, node in inherited("Signal").items():
         if name.startswith("_"):
             continue
+        is_property = any(
+            ast.unparse(item) == "property" for item in node.decorator_list
+        )
+        directive = "property" if is_property else "method"
+        suffix = "" if is_property else f"({signature(node)})"
         out += [
-            f"   .. py:method:: {name}({signature(node)})",
+            f"   .. py:{directive}:: {name}{suffix}",
             "",
             describe(node, "      ").rstrip(),
             "",

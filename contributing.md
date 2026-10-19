@@ -26,11 +26,42 @@ Refresh signatures and docstrings from the corresponding library checkout:
 
 ```shell
 uv run python tools/export_api.py ../wsrpc-aiohttp aiohttp
+uv run python tools/export_api.py ../wsrpc-asgi asgi
 ```
 
 The export reads Python syntax trees without importing or copying implementation
 bodies. Review the changed reference, then run the complete checks. Public API
 names retain their package-qualified anchors.
+
+## Check ASGI integrations locally
+
+The normal CI build checks ASGI Python syntax and the rendered API reference
+without needing a private library checkout. Runtime framework tests are
+optional and require installing the ASGI library explicitly:
+
+```shell
+uv sync --locked --group integrations
+uv pip install --python .venv/bin/python -e ../wsrpc-asgi
+uv run --no-sync --group integrations pytest tests/test_frameworks.py -q
+```
+
+These tests run the actual documentation files through Uvicorn, call RPC
+methods in both directions and check each framework's HTTP health route.
+A normal `uv sync --locked` restores the standalone site environment.
+
+## Source history and attribution
+
+The initial history was extracted from `wsrpc-aiohttp` with
+`git filter-repo --path docs/`. Only commits touching documentation survive.
+The pages were then moved to the top level and the ASGI documentation was
+imported into its own section. See `sources.toml` for the library source
+revisions used during this extraction. Library implementation code is not
+vendored in this repository. Keep copyright and license notices when updating
+examples or assets.
+
+Root-level URLs from the earlier aiohttp site redirect to the corresponding
+`aiohttp/` pages. The old API URL redirects directly to the API reference so
+package-qualified class and method fragments remain available.
 
 ## GitHub Pages
 

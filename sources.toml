@@ -1,0 +1,11 @@
+# Source revisions used for the documentation extraction.
+
+[aiohttp]
+repository = "https://github.com/wsrpc/wsrpc-aiohttp"
+revision = "b72e09602caff290ec0dfe96ac7888ffcf212a81"
+original_docs = "docs/source"
+
+[asgi]
+repository = "https://github.com/wsrpc/wsrpc-asgi"
+revision = "7d95443bc646d77dbf4df2013a0faf3ea1322606"
+original_docs = "docs/source"

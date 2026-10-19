@@ -1057,7 +1057,7 @@ Serialization
 
 
 
-   .. py:method:: is_frozen()
+   .. py:property:: is_frozen
 
 
 

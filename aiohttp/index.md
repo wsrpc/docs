@@ -1,4 +1,4 @@
-# WSRPC aiohttp
+# aiohttp server
 
 WSRPC provides two-way remote procedure calls over WebSockets for [aiohttp](https://docs.aiohttp.org/). Both peers can expose methods, make concurrent calls and receive results or remote exceptions over one connection.
 
@@ -29,5 +29,7 @@ Start with the [quick start](00-quick-start.md), then read about [routes and con
 development
 apidoc
 ```
+
+For ASGI applications, see the [ASGI guide](../asgi/index.md).
 
 Source code and issue tracker: [wsrpc/wsrpc-aiohttp](https://github.com/wsrpc/wsrpc-aiohttp). Created by [Dmitry Orlov](https://github.com/mosquito). The Python library is licensed under Apache-2.0; the bundled JavaScript client is licensed under MIT.

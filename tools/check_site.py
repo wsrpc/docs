@@ -27,7 +27,13 @@ class Page(HTMLParser):
         if tag == "link" and data.get("rel") == "canonical":
             self.canonical.append(data.get("href"))
         if tag == "meta" and data.get("http-equiv", "").lower() == "refresh":
-            self.refresh.append(data.get("content", ""))
+            content = data.get("content", "")
+            self.refresh.append(content)
+            separator, _, target = (
+                content.partition(";")[2].strip().partition("=")
+            )
+            if separator.lower() == "url" and target:
+                self.links.append(target.strip("\"' "))
 
 
 def check(root):

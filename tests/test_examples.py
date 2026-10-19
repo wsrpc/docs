@@ -7,8 +7,15 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-MARKDOWN = [*ROOT.glob("*.md"), *ROOT.glob("aiohttp/**/*.md")]
-PYTHON = [*ROOT.glob("aiohttp/examples/**/*.py")]
+MARKDOWN = [
+    *ROOT.glob("*.md"),
+    *ROOT.glob("aiohttp/**/*.md"),
+    *ROOT.glob("asgi/**/*.md"),
+]
+PYTHON = [
+    *ROOT.glob("aiohttp/examples/**/*.py"),
+    *ROOT.glob("asgi/examples/**/*.py"),
+]
 
 
 @pytest.mark.parametrize("path", PYTHON, ids=lambda p: str(p.relative_to(ROOT)))
