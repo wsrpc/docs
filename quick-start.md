@@ -1,7 +1,7 @@
 # Quick start
 
 Expose methods at `/ws/`, connect once, then call in either direction.
-Choose your framework below. Installation and server tabs stay in sync;
+Choose your framework below. Installation, method and server tabs stay in sync;
 the Python and browser clients work with every server shown here.
 
 ## Install
@@ -106,19 +106,141 @@ pip install 'wsrpc-asgi[client]' uvicorn
 Every server below exposes the same two methods: `echo` returns its keyword
 arguments, and `callback` asks the client to double a value.
 
-For **aiohttp**, the complete server below includes these methods.
-Create a `myapp` directory with an empty `myapp/__init__.py`.
-For **ASGI frameworks**, save this
-shared route definition as `myapp/common.py`:
+The method definitions below follow your framework selection.
+
+`````{tab-set}
+:sync-group: framework
+
+````{tab-item} aiohttp
+:sync: aiohttp
+
+These methods are included in the complete `myapp/app.py` server below.
+No separate `common.py` is needed.
+
+```{literalinclude} aiohttp/examples/frameworks/app.py
+:language: python
+:start-at: class RPC
+:end-before: async def health
+:prepend: from wsrpc_aiohttp import WebSocketAsync
+```
+````
+
+````{tab-item} FastAPI
+:sync: fastapi
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
 
 ```{literalinclude} asgi/examples/frameworks/common.py
 :language: python
 ```
+````
+
+````{tab-item} Starlette
+:sync: starlette
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
+
+```{literalinclude} asgi/examples/frameworks/common.py
+:language: python
+```
+````
+
+````{tab-item} Django
+:sync: django
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
+
+```{literalinclude} asgi/examples/frameworks/common.py
+:language: python
+```
+````
+
+````{tab-item} Channels
+:sync: channels
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
+
+```{literalinclude} asgi/examples/frameworks/common.py
+:language: python
+```
+````
+
+````{tab-item} Quart
+:sync: quart
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
+
+```{literalinclude} asgi/examples/frameworks/common.py
+:language: python
+```
+````
+
+````{tab-item} Litestar
+:sync: litestar
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
+
+```{literalinclude} asgi/examples/frameworks/common.py
+:language: python
+```
+````
+
+````{tab-item} Falcon
+:sync: falcon
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
+
+```{literalinclude} asgi/examples/frameworks/common.py
+:language: python
+```
+````
+
+````{tab-item} Sanic
+:sync: sanic
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
+
+```{literalinclude} asgi/examples/frameworks/common.py
+:language: python
+```
+````
+
+````{tab-item} BlackSheep
+:sync: blacksheep
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
+
+```{literalinclude} asgi/examples/frameworks/common.py
+:language: python
+```
+````
+
+````{tab-item} Bare ASGI
+:sync: bare
+
+Create a `myapp` directory with an empty `myapp/__init__.py`, then save
+these methods as `myapp/common.py`:
+
+```{literalinclude} asgi/examples/frameworks/common.py
+:language: python
+```
+````
+
+`````
 
 ## Connect your server
 
-Save the selected server as `myapp/app.py`. ASGI examples import the shared
-`common.py` above. Start the server with the command in the same tab.
+Create a `myapp` directory if needed and save the selected server as
+`myapp/app.py`. ASGI examples import the `common.py` from their method tab. Start the server with the command in the same tab.
 All examples listen at `ws://127.0.0.1:8000/ws/`; all except bare ASGI also
 serve `GET /health` as an ordinary HTTP route.
 
