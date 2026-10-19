@@ -17,8 +17,15 @@ Servers for aiohttp and ASGI frameworks, Python clients, routes and API referenc
 Node HTTP, Express and Fastify servers, browser and Node clients, typed contracts.
 ```
 
+```{card} Go
+:link: go/index
+:link-type: doc
+
+Typed server and client, net/http integration, ready route objects and context.
+```
+
 Choose a [quick start](quick-start.md) to run a complete example.
-Python and JavaScript implementations use the same protocol and can call each
+Python, JavaScript and Go implementations use the same protocol and can call each
 other. Framework-specific setup belongs to the language guides.
 
 ```{toctree}
@@ -28,6 +35,7 @@ other. Framework-specific setup belongs to the language guides.
 
 python/index
 javascript/index
+go/index
 ```
 
 ```{toctree}
@@ -42,6 +50,6 @@ clients
 contributing
 ```
 
-Python and the Node.js server are licensed under Apache-2.0; the JavaScript
+Python, Go and the Node.js server are licensed under Apache-2.0; the JavaScript
 client is licensed under MIT. Maintained by Dmitry Orlov
 ([orlovdl@gmail.com](mailto:orlovdl@gmail.com)).

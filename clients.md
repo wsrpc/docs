@@ -17,5 +17,10 @@ typed `@wsrpc/client/node` transport and remote contracts.
 The [browser client guide](javascript/client.md#browser) covers the existing
 `@wsrpc/client`, ESM imports and the classic script build.
 
+## Go
+
+The [Go client guide](go/client.md) covers typed calls, callbacks, local deadlines
+and connection cleanup. It connects to Python, TypeScript or Go servers.
+
 Clients share the [WSRPC protocol](protocol.md); API differences are listed
 in [compatibility](compatibility.md).
