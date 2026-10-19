@@ -21,7 +21,7 @@ html_theme_options = {
     "source_directory": "",
 }
 redirects = {
-    "00-quick-start": "quick-start.html",
+    "00-quick-start": "python/quick-start.html",
     "01-introduction": "aiohttp/01-introduction.html",
     "02-signals": "aiohttp/02-signals.html",
     "apidoc": "aiohttp/api.html",

@@ -1,44 +1,47 @@
 # WSRPC
 
-Bidirectional remote procedure calls over WebSockets. A Python or JavaScript
-peer can expose methods, call the other peer and receive results, errors or
-events over one connection.
+Bidirectional remote procedure calls over WebSockets. Both peers can expose
+methods and receive results, errors and events over one connection.
 
-[Get started](quick-start.md): install a package, choose your framework tab,
-and run the same RPC call from Python or a browser. Examples cover aiohttp,
-FastAPI, Starlette, Django, Channels, Quart, Litestar, Falcon, Sanic,
-BlackSheep and bare ASGI.
+```{card} Python
+:link: python/index
+:link-type: doc
 
-Both implementations use the same [WSRPC protocol](protocol.md). Existing
-Python and JavaScript clients can connect across the two server transports.
-The [client guide](clients.md) shows those choices; the
-[compatibility guide](compatibility.md) explains the Python API differences.
+Servers for aiohttp and ASGI frameworks, Python clients, routes and API reference.
+```
+
+```{card} JavaScript / TypeScript
+:link: javascript/index
+:link-type: doc
+
+Node HTTP, Express and Fastify servers, browser and Node clients, typed contracts.
+```
+
+Choose a [quick start](quick-start.md) to run a complete example.
+Python and JavaScript implementations use the same protocol and can call each
+other. Framework-specific setup belongs to the language guides.
 
 ```{toctree}
+:hidden:
 :maxdepth: 2
-:caption: Getting started
+:caption: Languages
+
+python/index
+javascript/index
+```
+
+```{toctree}
+:hidden:
+:maxdepth: 1
+:caption: Shared reference
 
 quick-start
 protocol
-clients
 compatibility
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: Server integrations
-
-aiohttp/index
-asgi/index
-```
-
-```{toctree}
-:maxdepth: 1
-:caption: Contributing
-
+clients
 contributing
 ```
 
-The Python projects are licensed under Apache-2.0; the bundled JavaScript
-client retains its MIT license. Maintained by Dmitry Orlov
+Python and the Node.js server are licensed under Apache-2.0; the JavaScript
+client is licensed under MIT. Maintained by Dmitry Orlov
 ([orlovdl@gmail.com](mailto:orlovdl@gmail.com)).

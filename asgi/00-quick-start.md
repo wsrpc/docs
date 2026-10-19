@@ -1,7 +1,7 @@
 # FastAPI browser demo
 
 For the shared RPC walkthrough with framework tabs, see the
-[quick start](../quick-start.md).
+[quick start](../python/quick-start.md).
 
 Install the server framework and optional Python client:
 

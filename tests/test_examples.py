@@ -11,6 +11,7 @@ MARKDOWN = [
     *ROOT.glob("*.md"),
     *ROOT.glob("aiohttp/**/*.md"),
     *ROOT.glob("asgi/**/*.md"),
+    *ROOT.glob("python/**/*.md"),
 ]
 PYTHON = [
     *ROOT.glob("aiohttp/examples/**/*.py"),

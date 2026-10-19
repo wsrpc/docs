@@ -1,7 +1,7 @@
 # ASGI integration details
 
 For runnable installation and server examples, choose a framework tab in the
-[shared quick start](../quick-start.md). This page covers integration-specific
+[Python quick start](../python/quick-start.md). This page covers integration-specific
 authentication, lifecycle and deployment behavior.
 
 ## FastAPI

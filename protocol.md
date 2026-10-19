@@ -27,7 +27,8 @@ A failed method call returns an error payload:
 {"id": 3, "error": {"type": "ValueError", "message": "Invalid value"}}
 ```
 
-Python peers turn remote errors into `ClientException`. Local timeout and
+The TypeScript peer rejects remote failures with `RemoteError` while
+preserving their payload. Python peers turn remote errors into `ClientException`. Local timeout and
 transport exceptions are separate from a remote handler failure. Outgoing
 Python calls accept keyword arguments. The receivers also understand positional
 parameter arrays from other peers.
@@ -48,8 +49,10 @@ event listeners. Use `emit()` when no RPC reply is needed.
 
 Raw binary WebSocket messages are separate from the JSON RPC envelopes.
 Binary hooks receive transport-specific input: `aiohttp.WSMessage` in the
-aiohttp implementation and `bytes` in the ASGI implementation. Bytes nested
-inside a JSON value are base64-encoded by the default serializer instead.
+aiohttp implementation and `bytes` in the ASGI implementation, and `Uint8Array` in TypeScript. Bytes nested
+inside a Python JSON value are base64-encoded by its default serializer.
+TypeScript uses native `JSON.stringify`; agree on a codec or use raw binary
+frames when exchanging byte arrays across languages.
 
 ## Routes and keepalive
 

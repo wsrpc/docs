@@ -14,7 +14,7 @@ supported, including free-threaded CPython. Trio event loops are not supported.
 pip install 'wsrpc-asgi[fastapi,client]' uvicorn
 ```
 
-Start with the [shared quick start](../quick-start.md) and choose your framework tab.
+Start with the [Python quick start](../python/quick-start.md) and choose your framework tab.
 The pages below cover transport-specific behavior and complete browser demos.
 
 ```{toctree}

@@ -84,3 +84,23 @@ configured in Pages settings.
 See [GitHub's custom-workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 for repository and environment requirements. GitHub Pages availability for a
 private repository depends on the account's plan.
+
+## Check TypeScript integrations locally
+
+The normal site checks run TypeScript syntax checks with Node.js 24+ without
+importing the new npm package. To check the real standalone examples against
+a locally built npm artifact, create an artifact from `wsrpc-ts`:
+
+```shell
+cd ../wsrpc-ts
+npm ci
+npm run pack
+cd ../wsrpc-docs
+WSRPC_TS_CLIENT=../wsrpc-ts/artifacts/wsrpc-client-4.5.0.tgz WSRPC_TS_SERVER=../wsrpc-ts/artifacts/wsrpc-server-4.5.0.tgz uv run --locked pytest tests/test_typescript_runtime.py -q
+```
+
+The optional tests install both artifacts, Express and Fastify into a temporary
+project, copy the actual documentation `.ts` files, and run each through native
+Node TypeScript support. They check HTTP health, calls from a Python client,
+reverse callbacks and the complete TypeScript client example. There is no
+library source checkout dependency in the normal Pages pipeline.
