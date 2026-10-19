@@ -10,7 +10,7 @@ cd wsrpc-aiohttp
 uv sync --locked
 ```
 
-All tools for development, tests and documentation are in the `dev` dependency group. Python versions before 3.14 use pytask 0.5.8 because pytask 0.6 depends on msgspec, which does not support free-threaded 3.13. Newer Python versions use pytask 0.6; both run the same tasks. `uv.lock` records the resolved versions. Use `uv lock` after intentionally changing dependencies; use `uv sync --locked` to reproduce the existing environment.
+All tools for development and tests are in the `dev` dependency group. Python versions before 3.14 use pytask 0.5.8 because pytask 0.6 depends on msgspec, which does not support free-threaded 3.13. Newer Python versions use pytask 0.6; both run the same tasks. `uv.lock` records the resolved versions. Use `uv lock` after intentionally changing dependencies; use `uv sync --locked` to reproduce the existing environment.
 
 ## Tasks
 
@@ -27,8 +27,7 @@ Select individual tasks using `-k`. Checks run on every invocation rather than b
 | `-k lint` | Ruff linting and formatting checks for the whole repository |
 | `-k typing` | mypy checks for the library, task runner and consumer type contracts |
 | `-k tests` | pytest, Markdown examples and coverage reports |
-| `-k test_docs` | Only the marked examples in README and documentation |
-| `-k 'docs and not test_docs'` | Sphinx HTML with warnings treated as errors |
+| `-k test_readme` | Only the marked README examples |
 | `-k build` | Source distribution and wheel through `uv build` |
 
 The root `Makefile` provides aliases for these tasks. On Windows, use the `uv run ...` commands directly.

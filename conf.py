@@ -3,7 +3,7 @@ from datetime import datetime
 project = "WSRPC"
 author = "Dmitry Orlov"
 copyright = f"{datetime.now().year}, {author}"
-extensions = ["myst_parser", "sphinx_reredirects"]
+extensions = ["myst_parser", "sphinx_reredirects", "sphinx_design"]
 source_suffix = {".md": "markdown", ".rst": "restructuredtext"}
 root_doc = "index"
 myst_heading_anchors = 3
@@ -21,7 +21,7 @@ html_theme_options = {
     "source_directory": "",
 }
 redirects = {
-    "00-quick-start": "aiohttp/00-quick-start.html",
+    "00-quick-start": "quick-start.html",
     "01-introduction": "aiohttp/01-introduction.html",
     "02-signals": "aiohttp/02-signals.html",
     "apidoc": "aiohttp/api.html",

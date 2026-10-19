@@ -18,7 +18,8 @@ The wheel includes the JavaScript client served through `wsrpc_aiohttp.STATIC_DI
 npm install @wsrpc/client
 ```
 
-Start with the [quick start](00-quick-start.md), then read about [routes and connections](01-introduction.md).
+Start with the [shared quick start](../quick-start.md) and choose your framework tab.
+The pages below cover transport-specific behavior and complete browser demos.
 
 ```{toctree}
 :maxdepth: 2

@@ -1,4 +1,7 @@
-# Quick start
+# FastAPI browser demo
+
+For the shared RPC walkthrough with framework tabs, see the
+[quick start](../quick-start.md).
 
 Install the server framework and optional Python client:
 
@@ -18,7 +21,7 @@ not depend on the current directory.
 ```
 
 From this documentation checkout, after installing the ASGI library and FastAPI
-(see the [framework guide](frameworks.md#run-the-examples)):
+(see the [framework guide](../contributing.md#check-asgi-integrations-locally)):
 
 ```shell
 uv run --no-sync python asgi/examples/main/server.py

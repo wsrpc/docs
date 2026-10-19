@@ -4,6 +4,7 @@ from pathlib import Path
 from uuid import UUID
 
 from aiohttp.test_utils import TestServer
+from wsrpc_aiohttp import WSRPCClient
 
 from aiohttp import ClientSession
 
@@ -32,3 +33,22 @@ def test_aiohttp_quick_start_files(monkeypatch, tmp_path, capsys):
 
     asyncio.run(scenario())
     assert UUID(capsys.readouterr().out.strip()).version == 4
+
+
+def test_shared_quick_start_aiohttp_server():
+    server = runpy.run_path(str(ROOT / "aiohttp/examples/frameworks/app.py"))
+
+    async def scenario():
+        async with TestServer(server["create_app"]()) as http:
+            async with WSRPCClient(str(http.make_url("/ws/"))) as client:
+                client.add_route("double", lambda socket, value: value * 2)
+                assert await client.proxy.echo(message="Hello") == {
+                    "message": "Hello"
+                }
+                assert await client.proxy.callback(value=21) == 42
+            async with ClientSession() as session:
+                async with session.get(http.make_url("/health")) as response:
+                    assert response.status == 200
+                    assert await response.json() == {"ok": True}
+
+    asyncio.run(scenario())

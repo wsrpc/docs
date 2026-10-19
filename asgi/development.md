@@ -3,8 +3,8 @@
 Commands on this page apply to the **wsrpc-asgi library checkout**.
 For this documentation repository, see [maintaining the site](../contributing.md).
 
-The repository uses uv, pytask, Ruff, mypy, pytest, MyST, Sphinx and Furo.
-Documentation and ordinary development dependencies share the `dev` group.
+The repository uses uv, pytask, Ruff, mypy, pytest.
+Development tools use the `dev` group.
 It includes the smaller `core-tests` group used by free-threaded CI.
 The `integrations` group adds optional frameworks for the full example suite;
 `serializers` adds a native codec solely for custom-codec testing.
@@ -15,7 +15,7 @@ uv run --locked pytask
 ```
 
 Individual tasks can be selected with `-k`: `lint`, `typing`, `tests`,
-`test_docs`, `docs`, `build`.
+`test_readme`, `build`.
 
 ```shell
 uv run --locked --group integrations pytest tests/test_examples.py
@@ -27,8 +27,9 @@ uv run --locked --group serializers pytest tests
 Tests use real WebSocket connections to Uvicorn; the suite also covers
 Hypercorn, old/new Python peer interoperability and the unchanged bundled
 JavaScript client. The JavaScript test needs Node 22+ with its browser-style
-WebSocket API. Example tests run the actual files included in the documentation
-and check both RPC callbacks and ordinary HTTP routes for each framework.
+WebSocket API. Integration tests use applications in `tests/frameworks/` and check both
+RPC callbacks and ordinary HTTP routes for each framework. The documentation
+repository also checks its own runnable example files.
 
 CI checks Python 3.10–3.15 and free-threaded 3.13–3.15, with Windows/macOS
 smoke jobs. Optional framework integrations run separately on ordinary CPython;
@@ -61,7 +62,7 @@ are included in that documentation repository.
 ## Packaging and release
 
 `uv build` produces a wheel and sdist. The wheel includes `py.typed` and the
-JavaScript assets. The sdist also contains documentation, examples and tests.
+JavaScript assets. The sdist also contains tests and development tooling.
 The upstream Apache-2.0 license and bundled JavaScript MIT license are retained.
 
 The inherited publish workflow takes the version from a published GitHub

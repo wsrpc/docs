@@ -1,4 +1,7 @@
-# Quick start
+# aiohttp browser demo
+
+For the shared RPC walkthrough with framework tabs, see the
+[quick start](../quick-start.md).
 
 This example exposes a `uuid4` method, serves the bundled JavaScript client, and provides both Python and browser clients.
 

@@ -4,14 +4,10 @@ Bidirectional remote procedure calls over WebSockets. A Python or JavaScript
 peer can expose methods, call the other peer and receive results, errors or
 events over one connection.
 
-Choose the server transport that fits your application:
-
-| Your application | Package | Start here |
-| --- | --- | --- |
-| aiohttp | `wsrpc-aiohttp` | [aiohttp quick start](aiohttp/00-quick-start.md) |
-| FastAPI, Starlette or another asyncio ASGI framework | `wsrpc-asgi` | [ASGI quick start](asgi/00-quick-start.md) |
-| Django/Channels, Quart, Litestar, Falcon, Sanic or BlackSheep | `wsrpc-asgi` | [Framework integrations](asgi/frameworks.md) |
-| Standalone asyncio ASGI endpoint | `wsrpc-asgi` | [Bare ASGI](asgi/frameworks.md#bare-asgi-and-other-frameworks) |
+[Get started](quick-start.md): install a package, choose your framework tab,
+and run the same RPC call from Python or a browser. Examples cover aiohttp,
+FastAPI, Starlette, Django, Channels, Quart, Litestar, Falcon, Sanic,
+BlackSheep and bare ASGI.
 
 Both implementations use the same [WSRPC protocol](protocol.md). Existing
 Python and JavaScript clients can connect across the two server transports.
@@ -20,8 +16,9 @@ The [client guide](clients.md) shows those choices; the
 
 ```{toctree}
 :maxdepth: 2
-:caption: Shared concepts
+:caption: Getting started
 
+quick-start
 protocol
 clients
 compatibility

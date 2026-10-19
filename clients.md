@@ -37,8 +37,7 @@ The aiohttp client closes its HTTP session, including a supplied session.
 Do not share that session with resources that need to outlive the RPC client.
 
 For complete runnable client/server pairs see the
-[aiohttp quick start](aiohttp/00-quick-start.md) or
-[ASGI quick start](asgi/00-quick-start.md).
+[shared quick start](quick-start.md).
 
 ## Browser
 

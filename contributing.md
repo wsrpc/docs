@@ -42,11 +42,12 @@ optional and require installing the ASGI library explicitly:
 ```shell
 uv sync --locked --group integrations
 uv pip install --python .venv/bin/python -e ../wsrpc-asgi
-uv run --no-sync --group integrations pytest tests/test_frameworks.py -q
+uv run --no-sync --group integrations pytest tests/test_frameworks.py tests/test_asgi_runtime.py -q
 ```
 
 These tests run the actual documentation files through Uvicorn, call RPC
 methods in both directions and check each framework's HTTP health route.
+They also run the complete FastAPI browser and callback demos.
 A normal `uv sync --locked` restores the standalone site environment.
 
 ## Source history and attribution
@@ -59,7 +60,8 @@ revisions used during this extraction. Library implementation code is not
 vendored in this repository. Keep copyright and license notices when updating
 examples or assets.
 
-Root-level URLs from the earlier aiohttp site redirect to the corresponding
+The earlier quick-start URL redirects to the shared quick start. Other
+root-level URLs from the earlier aiohttp site redirect to the corresponding
 `aiohttp/` pages. The old API URL redirects directly to the API reference so
 package-qualified class and method fragments remain available.
 
