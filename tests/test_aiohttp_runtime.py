@@ -35,8 +35,12 @@ def test_aiohttp_quick_start_files(monkeypatch, tmp_path, capsys):
     assert UUID(capsys.readouterr().out.strip()).version == 4
 
 
-def test_shared_quick_start_aiohttp_server():
-    server = runpy.run_path(str(ROOT / "aiohttp/examples/frameworks/app.py"))
+def test_shared_quick_start_aiohttp_server(tmp_path, monkeypatch):
+    source = ROOT / "aiohttp/examples/frameworks/app.py"
+    target = tmp_path / "app.py"
+    target.write_text(source.read_text())
+    monkeypatch.chdir(tmp_path)
+    server = runpy.run_path(str(target))
 
     async def scenario():
         async with TestServer(server["create_app"]()) as http:

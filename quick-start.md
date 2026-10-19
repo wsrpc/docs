@@ -101,6 +101,13 @@ pip install 'wsrpc-asgi[client]' uvicorn
 
 `````
 
+For a source installation of the ASGI library, use the same extras with its
+Git repository instead of the distribution name, for example:
+
+```shell
+pip install 'wsrpc-asgi[client,fastapi] @ git+https://github.com/wsrpc/wsrpc-asgi.git' uvicorn
+```
+
 ## Define the RPC methods
 
 Every server below exposes the same two methods: `echo` returns its keyword
@@ -114,8 +121,7 @@ The method definitions below follow your framework selection.
 ````{tab-item} aiohttp
 :sync: aiohttp
 
-These methods are included in the complete `myapp/app.py` server below.
-No separate `common.py` is needed.
+These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} aiohttp/examples/frameworks/app.py
 :language: python
@@ -128,110 +134,120 @@ No separate `common.py` is needed.
 ````{tab-item} FastAPI
 :sync: fastapi
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/fastapi_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
 ````{tab-item} Starlette
 :sync: starlette
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/starlette_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
 ````{tab-item} Django
 :sync: django
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/django_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
 ````{tab-item} Channels
 :sync: channels
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/channels_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
 ````{tab-item} Quart
 :sync: quart
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/quart_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
 ````{tab-item} Litestar
 :sync: litestar
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/litestar_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
 ````{tab-item} Falcon
 :sync: falcon
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/falcon_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
 ````{tab-item} Sanic
 :sync: sanic
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/sanic_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
 ````{tab-item} BlackSheep
 :sync: blacksheep
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/blacksheep_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
 ````{tab-item} Bare ASGI
 :sync: bare
 
-Create a `myapp` directory with an empty `myapp/__init__.py`, then save
-these methods as `myapp/common.py`:
+These methods are included in the complete `app.py` server below.
 
-```{literalinclude} asgi/examples/frameworks/common.py
+```{literalinclude} asgi/examples/frameworks/bare_app.py
 :language: python
+:pyobject: create_handler
+:prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
 
@@ -239,8 +255,8 @@ these methods as `myapp/common.py`:
 
 ## Connect your server
 
-Create a `myapp` directory if needed and save the selected server as
-`myapp/app.py`. ASGI examples import the `common.py` from their method tab. Start the server with the command in the same tab.
+Save the selected server as `app.py`. Every tab is a complete, standalone
+file containing its RPC methods and framework integration. Start the server with the command in the same tab.
 All examples listen at `ws://127.0.0.1:8000/ws/`; all except bare ASGI also
 serve `GET /health` as an ordinary HTTP route.
 
@@ -255,7 +271,7 @@ serve `GET /health` as an ordinary HTTP route.
 ```
 
 ```shell
-python -m myapp.app
+python app.py
 ```
 ````
 
@@ -269,7 +285,7 @@ python -m myapp.app
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 
@@ -283,7 +299,7 @@ Keep the endpoint and close it in the application's lifespan, as shown here.
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 
@@ -297,21 +313,23 @@ This standalone example configures minimal settings. In an existing project keep
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 
 ````{tab-item} Channels
 :sync: channels
 
-Also copy [django_app.py](asgi/examples/frameworks/django_app.py) to `myapp/django_app.py`; it supplies the HTTP application and standalone settings. In an existing Channels project retain its settings and authentication/origin middleware.
+This standalone file includes Django settings, the HTTP application and the
+Channels router. In an existing Channels project retain its settings and
+authentication/origin middleware.
 
 ```{literalinclude} asgi/examples/frameworks/channels_app.py
 :language: python
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 
@@ -323,7 +341,7 @@ uvicorn myapp.app:app --host 127.0.0.1 --port 8000
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 
@@ -335,7 +353,7 @@ uvicorn myapp.app:app --host 127.0.0.1 --port 8000
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 
@@ -347,7 +365,7 @@ uvicorn myapp.app:app --host 127.0.0.1 --port 8000
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 
@@ -361,7 +379,7 @@ Run through Uvicorn in ASGI mode so the RPC wrapper receives connections.
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 
@@ -373,7 +391,7 @@ uvicorn myapp.app:app --host 127.0.0.1 --port 8000
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 
@@ -387,7 +405,7 @@ The endpoint itself is an ASGI callable. Use an asyncio server backend.
 ```
 
 ```shell
-uvicorn myapp.app:app --host 127.0.0.1 --port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000
 ```
 ````
 

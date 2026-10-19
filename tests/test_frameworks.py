@@ -1,9 +1,11 @@
 """Optional runtime checks of the imported ASGI documentation examples."""
 
 import asyncio
-import importlib
+import importlib.util
 import socket
+import sys
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 import pytest
 
@@ -65,12 +67,24 @@ async def serve_app(app):
         ("blacksheep", "blacksheep"),
     ],
 )
-def test_framework_example(name, dependency):
+def test_framework_example(name, dependency, tmp_path, monkeypatch):
     if dependency:
         pytest.importorskip(dependency)
 
+    source = (
+        Path(__file__).resolve().parents[1]
+        / f"asgi/examples/frameworks/{name}_app.py"
+    )
+    target = tmp_path / "app.py"
+    target.write_text(source.read_text())
+    monkeypatch.chdir(tmp_path)
+    module_name = f"standalone_{name}"
+    spec = importlib.util.spec_from_file_location(module_name, target)
+    module = importlib.util.module_from_spec(spec)
+    monkeypatch.setitem(sys.modules, module_name, module)
+    spec.loader.exec_module(module)
+
     async def scenario():
-        module = importlib.import_module(f"asgi.examples.frameworks.{name}_app")
         async with serve_app(module.app) as url:
             async with WSRPCClient(url + "/ws/", timeout=3) as client:
                 client.add_route("double", lambda socket, value: value * 2)

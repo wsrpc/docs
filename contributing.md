@@ -45,8 +45,11 @@ uv pip install --python .venv/bin/python -e ../wsrpc-asgi
 uv run --no-sync --group integrations pytest tests/test_frameworks.py tests/test_asgi_runtime.py -q
 ```
 
-These tests run the actual documentation files through Uvicorn, call RPC
-methods in both directions and check each framework's HTTP health route.
+These tests copy each standalone framework file to an empty temporary
+directory, load it without the documentation package, and run it through
+Uvicorn. They call RPC methods in both directions and check each framework's
+HTTP health route. The aiohttp example is checked the same way using its
+own HTTP server.
 They also run the complete FastAPI browser and callback demos.
 A normal `uv sync --locked` restores the standalone site environment.
 
