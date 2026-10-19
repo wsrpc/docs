@@ -138,7 +138,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/fastapi_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
@@ -150,7 +151,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/starlette_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
@@ -162,7 +164,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/django_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
@@ -174,7 +177,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/channels_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
@@ -186,7 +190,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/quart_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
@@ -198,7 +203,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/litestar_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
@@ -210,7 +216,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/falcon_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
@@ -222,7 +229,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/sanic_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
@@ -234,7 +242,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/blacksheep_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
@@ -246,7 +255,8 @@ These methods are included in the complete `app.py` server below.
 
 ```{literalinclude} asgi/examples/frameworks/bare_app.py
 :language: python
-:pyobject: create_handler
+:start-at: class RPC
+:end-at: RPC.add_route("callback", callback)
 :prepend: from wsrpc_asgi import WebSocketAsync
 ```
 ````
