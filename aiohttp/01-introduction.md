@@ -4,7 +4,7 @@
 
 {py:class}`wsrpc_aiohttp.WebSocketAsync` is an aiohttp request handler. Register it on a WebSocket endpoint and expose methods with `add_route()`. {py:class}`wsrpc_aiohttp.WSRPCClient` exposes the same `call()` and `proxy` interfaces from Python.
 
-```{image} _static/server-client.svg
+```{image} ../_static/server-client.svg
 :alt: Server and client initiating independent RPC calls over one connection
 ```
 
@@ -160,7 +160,7 @@ async def main() -> None:
 asyncio.run(main())
 ```
 
-```{image} _static/loopback-call.svg
+```{image} ../_static/loopback-call.svg
 :alt: A server handling a client call by invoking a method back on that client
 ```
 

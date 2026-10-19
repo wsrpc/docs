@@ -1,0 +1,37 @@
+[project]
+name = "wsrpc-docs"
+version = "0.1.0"
+description = "Documentation for WSRPC aiohttp and ASGI"
+requires-python = ">=3.12"
+authors = [{name = "Dmitry Orlov", email = "orlovdl@gmail.com"}]
+license = "Apache-2.0"
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "sphinx>=8,<10",
+    "myst-parser>=4,<6",
+    "furo>=2025.9.25",
+    "sphinx-reredirects>=1,<2",
+    "pytask>=0.6,<0.7",
+    "ruff>=0.14,<1",
+    "pytest>=9,<10",
+    "markdown-pytest>=0.5,<1",
+    "wsrpc-aiohttp==4.1.0",
+]
+
+[tool.pytask.ini_options]
+paths = ["task_dev.py"]
+force = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "aiohttp"]
+
+[tool.ruff]
+line-length = 80
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

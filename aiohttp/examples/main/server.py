@@ -2,9 +2,9 @@ import logging
 import uuid
 from pathlib import Path
 
-from aiohttp import web
-
 from wsrpc_aiohttp import STATIC_DIR, WebSocketAsync
+
+from aiohttp import web
 
 
 class Socket(WebSocketAsync):

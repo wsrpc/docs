@@ -6,7 +6,6 @@ from pathlib import Path
 from random import choice
 
 import aiohttp.web
-
 from wsrpc_aiohttp import STATIC_DIR, WebSocketAsync, WebSocketRoute
 
 log = logging.getLogger(__name__)

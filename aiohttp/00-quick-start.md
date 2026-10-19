@@ -8,7 +8,7 @@ From the repository root, install the development environment and start the exam
 
 ```shell
 uv sync --locked
-uv run --locked python docs/source/examples/main/server.py
+uv run --locked python aiohttp/examples/main/server.py
 ```
 
 The server listens on `http://127.0.0.1:8000`. Its static directory is resolved relative to the script, so the command works from the repository root.
@@ -24,7 +24,7 @@ The server listens on `http://127.0.0.1:8000`. Its static directory is resolved 
 In another terminal:
 
 ```shell
-uv run --locked python docs/source/examples/main/client.py
+uv run --locked python aiohttp/examples/main/client.py
 ```
 
 ```{literalinclude} examples/main/client.py
@@ -77,6 +77,6 @@ asyncio.run(main())
 
 Either side can initiate a call while earlier calls are still running. Responses carry the request identifier, so they can arrive in a different order from the requests.
 
-```{image} _static/explanation.svg
+```{image} ../_static/explanation.svg
 :alt: Request and response flow between a WebSocket server and client
 ```

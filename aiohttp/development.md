@@ -56,28 +56,14 @@ To include the GIL checks used in CI, set `WSRPC_EXPECT_FREE_THREADED=1` when ru
 
 ## Documentation
 
-Pages in `docs/source` use MyST Markdown. Sphinx builds them with the Furo theme; the API reference uses autodoc. Python docstrings remain in Sphinx's reStructuredText format and are evaluated through MyST's `eval-rst` bridge.
+The shared documentation site is maintained separately in
+[wsrpc/docs](https://github.com/wsrpc/docs), alongside the ASGI guide.
+Its source pages use MyST Markdown and the Furo theme. See
+[documentation development](../contributing.md) for building the site,
+checking examples and updating API snapshots.
 
-Build and open `docs/build/html/index.html`:
-
-```shell
-uv run --locked pytask -k 'docs and not test_docs'
-```
-
-Read the Docs uses the same task. When `READTHEDOCS_OUTPUT` is set, the task writes HTML to its `html` subdirectory.
-
-To turn a self-contained Python code block into a documentation test, place an HTML comment immediately above it:
-
-````markdown
-<!-- name: test_example -->
-```python
-assert 2 + 2 == 4
-```
-````
-
-Each marked block must include its own setup. Use an ephemeral local server for network examples and close clients with a context manager. Run `uv run --locked pytask -k test_docs` to check them.
-
-The quick-start Python and browser files live in `docs/source/examples/main`. The additional demo in `docs/source/examples` demonstrates stateful routes, callbacks and binary messages.
+The commands elsewhere on this page apply to the **wsrpc-aiohttp library
+checkout** cloned above, rather than to the documentation repository.
 
 ## Build distributions
 
